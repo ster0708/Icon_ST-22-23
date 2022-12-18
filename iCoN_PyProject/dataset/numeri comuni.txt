@@ -1,0 +1,35 @@
+Milano:
+
+Numero comune: 15146
+Provincia: 15
+Regione: 3
+
+Torino:
+
+Numero comune: 1272
+Provincia: 1
+Regione: 1
+
+Roma:
+
+Numero comune: 58091
+Provincia: 58
+Regione: 12
+
+Napoli:
+
+Numero comune: 63049
+Provincia: 63
+Regione: 15
+
+Bari:
+
+Numero comune: 72066
+Provincia: 72
+Regione: 16
+
+Palermo:
+
+Numero comune: 82053
+Provincia: 82
+Regione: 19
