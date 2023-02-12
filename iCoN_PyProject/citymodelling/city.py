@@ -1,13 +1,12 @@
+#Classe che ci permette di modellare una generica città. Per il momento contiene solo nome e probabilità calcolata dalla rete bayesiana
 
+class City:
+    def __init__(self, nome, prob):
+        self.nome: str = nome
+        self.prob: float = prob
 
-class Citta:
-    def __init__(self, nome, musei, attrazioni):
-        self.nome = nome
-        self.musei = musei
-        self.attrazioni = attrazioni
+    def getNome(self):
+        return self.nome
 
-    def getMusei(self):
-        pass
-
-    def getAttrazioni(self):
-        pass
+    def getProb(self):
+        return self.prob

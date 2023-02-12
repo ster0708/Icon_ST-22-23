@@ -12,7 +12,7 @@ def import_dataset_musei(city):
                                        "Identificatore in OpenStreetMap", "Longitudine","Latitudine"])
     """
     directory = os.getcwd() + "\iCoN_PyProject\dataset"
-    dataframe_musei = pd.read_csv(directory + "\musei_italia.csv", sep=';')
+    dataframe_musei = pd.read_csv(directory + "\musei_italia.csv", sep=';', encoding='utf-8', on_bad_lines='skip', dtype={'Nome': 'string'})
     dataframe_musei.dropna() #pulisce il dataset dalle celle vuote
 
     if city == "Milano":
@@ -33,12 +33,14 @@ def import_dataset_musei(city):
     elif city == "Palermo":
         dataframe_musei_palermo = dataframe_musei.loc[dataframe_musei["Comune"] == 82053]
         return dataframe_musei_palermo
+    elif city == "All":
+        return dataframe_musei
 
 
 def import_dataset_attrazioni_turistiche(city):
     directory = os.getcwd() + "\iCoN_PyProject\dataset"
     dataframe_attrazioni_turistiche = pd.read_csv(directory + "\\attrazioni_turistiche_italia.csv", encoding='ISO-8859-1',
-                                                   on_bad_lines='skip', sep = ';')
+                                                   on_bad_lines='skip', sep=';')
 
 
     dataframe_attrazioni_turistiche_clean = dataframe_attrazioni_turistiche[['Comune', 'Nome']] #seleziona solo le colonne Comune e Nome
@@ -67,6 +69,8 @@ def import_dataset_attrazioni_turistiche(city):
     elif city == "Palermo":
         dataframe_attrazioni_turistiche_palermo = dataframe_attrazioni_turistiche_clean.loc[dataframe_attrazioni_turistiche_clean["Comune"] == "PALERMO"]
         return dataframe_attrazioni_turistiche_palermo
+    elif city == "All":
+        return dataframe_attrazioni_turistiche_clean
 
 #importiamo il dataset sport
 def import_dataset_sport(city):
@@ -93,6 +97,8 @@ def import_dataset_sport(city):
     elif city == "Palermo":
         dataframe_sport_palermo = dataframe_sport.loc[dataframe_sport["Comune"] == "PALERMO"]
         return dataframe_sport_palermo
+    elif city == "All":
+        return dataframe_sport
 
 
 
@@ -123,6 +129,8 @@ def import_dataset_parchi_divertimento(city):
     elif city == "Palermo":
         dataframe_parchi_palermo = dataframe_parchi.loc[dataframe_parchi["Comune"] == "PALERMO"]
         return dataframe_parchi_palermo
+    elif city == "All":
+        return dataframe_parchi
 
 def import_dataset_cibo(city):
     directory = os.getcwd() + "\iCoN_PyProject\dataset"
@@ -150,6 +158,8 @@ def import_dataset_cibo(city):
     elif city == "Palermo":
         dataframe_cibo_palermo = dataframe_cibo.loc[dataframe_cibo["Comune"] == "PALERMO"]
         return dataframe_cibo_palermo
+    elif city == "All":
+        return dataframe_cibo
 
 
 def get_dataset_musei(city):
@@ -163,3 +173,12 @@ def get_dataset_attrazioni(city):
 def get_dataset_parchi(city):
     dataframe_parchi_ = import_dataset_parchi_divertimento(city)
     return dataframe_parchi_ #ritorna un dataframe pandas
+
+def get_dataset_cibi(city):
+    dataframe_cibi = import_dataset_cibo(city)
+    return dataframe_cibi
+
+def get_dataset_sport(city):
+    dataframe_sport = import_dataset_sport(city)
+    return dataframe_sport
+
